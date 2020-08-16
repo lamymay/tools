@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:drawable="@drawable/shape2_2"/>
+    <item android:drawable="@drawable/shape2_1" android:left="10dp"/>
+
+</layer-list>
+
+
+<!--
+
+layer 是层叠显示的
+
+-->

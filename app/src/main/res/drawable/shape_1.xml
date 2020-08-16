@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+        android:shape="line"
+
+-->
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+        android:shape="oval"
+        >
+
+    <solid android:color="@android:color/holo_orange_dark"
+            />
+
+    <!--  倒角-->
+<!--
+    <corners
+            android:topLeftRadius="20dp"
+            android:topRightRadius="20dp"
+            android:bottomLeftRadius="20dp"
+            android:bottomRightRadius="20dp"/>-->
+
+<!--边框虚线-->
+<!--
+    <stroke
+            android:color="@color/colorPrimary"
+            android:width="4dp"
+            android:dashGap="10dp"
+            android:dashWidth="50dp"
+            />
+-->
+
+<!--渐变色-->
+<!--    <gradient
+            android:angle="90"
+            android:centerColor="#ddd"
+            android:startColor="#000"
+            android:endColor="#fff"
+            />-->
+
+    <size
+            android:width="20dp"
+            android:height="20dp"/>
+
+</shape>
+
+        <!--
+        实现一个倒角的矩形
+        solid 是填充颜色，不写是透明的，看不出效果，所以
+        corners 是倒角
+
+shape 有一个属性值line 默认是实线，需要虚线则设这只 stroke属性
+shape 有一个值 oval 椭圆的效果，可以做圆点
+        -->

@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">哎😔</string>
+    <string name="qr_input_1">""</string>
+    <string name="qr_btn_create_img">转换为二维码</string>
+    <string name="activity1_name">活动1</string>
+    <string name="activity2_name">活动2</string>
+    <string name="activity3_name">活动3</string>
+
+
+</resources>
