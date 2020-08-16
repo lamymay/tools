@@ -1,4 +1,4 @@
-package com.arc.tool.activity;
+package com.arc.tool.activity.test1;
 
 import android.app.Activity;
 import android.content.Intent;

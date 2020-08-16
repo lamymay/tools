@@ -1,14 +1,12 @@
 package com.arc.tool;
 
+import android.content.Intent;
 import android.os.Bundle;
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.view.KeyEvent;
 import android.view.View;
 import android.widget.*;
 import androidx.appcompat.app.AppCompatActivity;
+import com.arc.tool.activity.test2.CaptureActivity;
 import com.arc.tool.code.CreateCode;
-import com.arc.tool.code.ScanQRImage;
 
 /**
  * 活动1
@@ -63,13 +61,19 @@ public class ActivityQRCode extends AppCompatActivity {
 
                 //输出图片
                 ImageView imageView = findViewById(R.id.qrOutputImage);
-                new ScanQRImage().scanQRImage(  getApplicationContext());
+                //   new ScanQRImage().scanQRImage(  getApplicationContext());
+
+                Intent intent = new Intent(ActivityQRCode.this, CaptureActivity.class);
+                startActivityForResult(intent, 0x10);
+
             }
         });
 
     }
 
+    //  public final static int REQUEST_CODE = 1;
 
+//git@github.com:yipianfengye/android-zxingLibrary.git
 }
 
 

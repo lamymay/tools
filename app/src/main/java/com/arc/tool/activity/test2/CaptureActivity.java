@@ -1,16 +1,21 @@
-package com.arc.tool.activity;
+package com.arc.tool.activity.test2;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.widget.Toast;
 import com.arc.tool.R;
+import com.arc.tool.activity.test1.ActivityFirst;
+import com.arc.tool.activity.test1.MainActivity;
 
 /**
+ * 活动1
+ *
  * @author 叶超
- * @since 2020/2/9 12:22
+ * @since 2020/08/17 00:40
  */
-public class ActivityFirst extends Activity {
+public class CaptureActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,7 +49,7 @@ public class ActivityFirst extends Activity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         //注意是两个code 别判断错了
-        if (requestCode == 0x10) { // 这个地方填的是我上面填的值  0x10
+/*        if (requestCode == 0x10) {  // 这个地方填的是我上面填的值  0x10
             if (resultCode == Activity.RESULT_OK) {
                 // B  to A ,A is this
                 // 注意是 data 中get
@@ -52,7 +57,32 @@ public class ActivityFirst extends Activity {
                 String val2FromB = data.getStringExtra("bKey2");
                 Toast.makeText(this, "接收到的参数" + val1FromB + val2FromB, Toast.LENGTH_SHORT).show();
             }
+        }*/
+
+        Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
+        intent.addCategory(Intent.CATEGORY_OPENABLE);
+        intent.setType("image/*");
+        startActivityForResult(intent, REQUEST_IMAGE);
+
+        /**
+         * 处理二维码扫描结果
+         */
+        if (requestCode == 0x10) {
+            //处理扫描结果（在界面上显示）
+            if (null != data) {
+                Bundle bundle = data.getExtras();
+                if (bundle == null) {
+                    return;
+                }
+                if (bundle.getInt(CodeUtils.RESULT_TYPE) == CodeUtils.RESULT_SUCCESS) {
+                    String result = bundle.getString(CodeUtils.RESULT_STRING);
+                    Toast.makeText(this, "解析结果:" + result, Toast.LENGTH_LONG).show();
+                } else if (bundle.getInt(CodeUtils.RESULT_TYPE) == CodeUtils.RESULT_FAILED) {
+                    Toast.makeText(MainActivity.this, "解析二维码失败", Toast.LENGTH_LONG).show();
+                }
+            }
         }
+
     }
 }
 
