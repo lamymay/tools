@@ -1,12 +1,14 @@
-package com.arc.tool;
+package com.arc.tool.activity.qrcode;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.*;
+import android.widget.AutoCompleteTextView;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
-import com.arc.tool.activity.test2.CaptureActivity;
-import com.arc.tool.code.CreateCode;
+import com.arc.tool.R;
+import com.arc.tool.utils.CreateCode;
 
 /**
  * 活动1
@@ -16,18 +18,23 @@ import com.arc.tool.code.CreateCode;
  */
 public class ActivityQRCode extends AppCompatActivity {
 
+    /**
+     * 标志位
+     */
+    public final static int REQUEST_CODE = 1;
+
     //  private EditText editText;
     //    private AutoCompleteTextView textView;
 
     //输出图片
-//    ImageView imageView;
+    //    ImageView imageView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_qr);
 
-//        imageView = findViewById(R.id.outputImage);
+        //        imageView = findViewById(R.id.outputImage);
 
 
         //通过R.layout.文件名称来关联这个
@@ -53,27 +60,29 @@ public class ActivityQRCode extends AppCompatActivity {
         qrBtnScanImageButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //输入框
-                AutoCompleteTextView input = (AutoCompleteTextView) findViewById(R.id.qrInput1);
-                String inputString = input.getText().toString();
-                System.out.println(input);
-                System.out.println(inputString);
+                String message = "点击 启动相机识别二维码";
+                Toast.makeText(ActivityQRCode.this, message, Toast.LENGTH_SHORT).show();
 
-                //输出图片
-                ImageView imageView = findViewById(R.id.qrOutputImage);
-                //   new ScanQRImage().scanQRImage(  getApplicationContext());
-
-                Intent intent = new Intent(ActivityQRCode.this, CaptureActivity.class);
-                startActivityForResult(intent, 0x10);
+                //                //输入框
+                //                AutoCompleteTextView input = (AutoCompleteTextView) findViewById(R.id.qrInput1);
+                //                String inputString = input.getText().toString();
+                //                System.out.println(input);
+                //                System.out.println(inputString);
+                //
+                //                //输出图片
+                //                ImageView imageView = findViewById(R.id.qrOutputImage);
+                //                //   new ScanQRImage().scanQRImage(  getApplicationContext());
+                //
+                //                Intent intent = new Intent(this, CaptureActivity.class);
+                //                startActivityForResult(intent, 0x10);
 
             }
         });
 
     }
 
-    //  public final static int REQUEST_CODE = 1;
 
-//git@github.com:yipianfengye/android-zxingLibrary.git
+    //git@github.com:yipianfengye/android-zxingLibrary.git
 }
 
 

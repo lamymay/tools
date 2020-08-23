@@ -1,8 +1,7 @@
-package com.arc.tool.code;
+package com.arc.tool.utils;
 
 import android.content.Context;
 import android.graphics.Bitmap;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 import com.google.zxing.BarcodeFormat;
