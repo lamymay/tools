@@ -8,39 +8,24 @@ import android.widget.ImageView;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import com.arc.tool.R;
-import com.arc.tool.utils.CreateCode;
+import com.arc.tool.utils.outputImage;
 
 /**
  * 活动1
  *
- * @author 叶超
+ * @author may
  * @since 2020/08/16 21:48
  */
 public class ActivityQRCode extends AppCompatActivity {
 
-    /**
-     * 标志位
-     */
-    public final static int REQUEST_CODE = 1;
-
-    //  private EditText editText;
-    //    private AutoCompleteTextView textView;
-
-    //输出图片
-    //    ImageView imageView;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        //通过R.layout.文件名称来关联一个布局文件
         setContentView(R.layout.activity_qr);
 
-        //        imageView = findViewById(R.id.outputImage);
-
-
-        //通过R.layout.文件名称来关联这个
         //点击事件
         Button clickEvent = (Button) findViewById(R.id.qrBtnCreateImg);
-        Button qrBtnScanImageButton = (Button) findViewById(R.id.qrBtnScanImage);
         clickEvent.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -52,15 +37,16 @@ public class ActivityQRCode extends AppCompatActivity {
 
                 //输出图片
                 ImageView imageView = findViewById(R.id.qrOutputImage);
-                new CreateCode().createQR(inputString, imageView, getApplicationContext());
+                new outputImage().createQR(inputString, imageView, getApplicationContext());
             }
         });
 
         //点击 启动相机识别二维码
+        Button qrBtnScanImageButton = (Button) findViewById(R.id.qrBtnScanImage);
         qrBtnScanImageButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String message = "点击 启动相机识别二维码";
+                String message = "假装在识别二维码";
                 Toast.makeText(ActivityQRCode.this, message, Toast.LENGTH_SHORT).show();
 
                 //                //输入框
@@ -82,7 +68,6 @@ public class ActivityQRCode extends AppCompatActivity {
     }
 
 
-    //git@github.com:yipianfengye/android-zxingLibrary.git
 }
 
 
