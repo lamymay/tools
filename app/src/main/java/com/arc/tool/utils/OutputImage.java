@@ -36,7 +36,7 @@ public class OutputImage {
         imageView.setImageBitmap(bitmap);
         //imageView.setTooltipText("");
         //提示被点击了
-        Toast toast = Toast.makeText(applicationContext, "二维码中文本是" + inputString, Toast.LENGTH_LONG);
+        Toast toast = Toast.makeText(applicationContext, "二维码中文本是" + inputString, Toast.LENGTH_SHORT);
         toast.show();
     }
 
