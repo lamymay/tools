@@ -8,6 +8,11 @@ import androidx.core.content.ContextCompat;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * 權限檢查
+ *
+ * @author may
+ */
 public final class CheckPermissionUtils {
     private CheckPermissionUtils() {
     }
@@ -20,11 +25,11 @@ public final class CheckPermissionUtils {
     };
 
     //检测权限
-    public static String[] checkPermission(Context context){
+    public static String[] checkPermission(Context context) {
         List<String> data = new ArrayList<>();//存储未申请的权限
         for (String permission : permissions) {
             int checkSelfPermission = ContextCompat.checkSelfPermission(context, permission);
-            if(checkSelfPermission == PackageManager.PERMISSION_DENIED){//未申请
+            if (checkSelfPermission == PackageManager.PERMISSION_DENIED) {//未申请
                 data.add(permission);
             }
         }

@@ -8,7 +8,7 @@ import android.widget.ImageView;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import com.arc.tool.R;
-import com.arc.tool.utils.outputImage;
+import com.arc.tool.utils.OutputImage;
 
 /**
  * 活动1
@@ -37,7 +37,7 @@ public class ActivityQRCode extends AppCompatActivity {
 
                 //输出图片
                 ImageView imageView = findViewById(R.id.qrOutputImage);
-                new outputImage().createQR(inputString, imageView, getApplicationContext());
+                new OutputImage().createQR(inputString, imageView, getApplicationContext());
             }
         });
 

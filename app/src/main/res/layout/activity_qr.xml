@@ -18,7 +18,7 @@
 
     <AutoCompleteTextView
             android:id="@+id/qrInput1"
-            android:text="@string/qr_input_1"
+            android:text="@string/qr_input_1_default"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/qrOutputImage"
