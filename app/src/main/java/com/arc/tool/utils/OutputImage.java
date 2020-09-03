@@ -1,7 +1,10 @@
 package com.arc.tool.utils;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
+import android.util.Patterns;
+import android.webkit.URLUtil;
 import android.widget.ImageView;
 import android.widget.Toast;
 import com.google.zxing.BarcodeFormat;
@@ -38,6 +41,7 @@ public class OutputImage {
         //提示被点击了
         Toast toast = Toast.makeText(applicationContext, "二维码中文本是" + inputString, Toast.LENGTH_SHORT);
         toast.show();
+
     }
 
     private String formatInputString(String inputString) {
@@ -53,8 +57,11 @@ public class OutputImage {
         if (inputString.contains("/") && !inputString.startsWith("http")) {
             return "http://" + inputString;
         }
-        return null;
+
+        return inputString;
     }
+
+
 
 
     /**
