@@ -137,3 +137,18 @@ public class ActivityQRCode extends AppCompatActivity {
 //
 //                Intent intent = new Intent(this, CaptureActivity.class);
 //                startActivityForResult(intent, 0x10);
+
+
+
+//github Zxing
+//https://github.com/yuzhiqiang1993/zxing
+//https://github.com/bingoogolapple/BGAQRCode-Android
+//https://www.cnblogs.com/xch-yang/p/9418493.html
+//https://www.mls-tech.info/app/android/android-scan-qrcode/
+//https://github.com/chentao0707/QrCodeScan
+//https://github.com/bingoogolapple/BGAQRCode-Android
+
+
+//c1000k
+//https://github.com/lamymay/c1000k
+
