@@ -18,12 +18,12 @@ import com.uuzuche.lib_zxing.activity.CodeUtils;
 import com.uuzuche.lib_zxing.activity.ZXingLibrary;
 
 /**
- * 活动1
+ * 活动1,如果要成为一个活动那么必须继承Activity类，复写onCreate（）
  *
  * @author may
  * @since 2020/08/16 21:48
  */
-public class ActivityQRCode extends AppCompatActivity {
+public class QRMainActivity extends AppCompatActivity {
 
     /**
      * 标志位
@@ -66,7 +66,7 @@ public class ActivityQRCode extends AppCompatActivity {
         qrBtnScanImageButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                scan(ActivityQRCode.this);
+                scan(QRMainActivity.this);
 
 
             }
@@ -74,12 +74,12 @@ public class ActivityQRCode extends AppCompatActivity {
 
     }
 
-    private void scan(ActivityQRCode activityQRCode) {
+    private void scan(QRMainActivity QRMainActivity) {
         String message = "识别二维码";
-        Toast.makeText(ActivityQRCode.this, message, Toast.LENGTH_SHORT).show();
+        Toast.makeText(QRMainActivity.this, message, Toast.LENGTH_SHORT).show();
 
-        ZXingLibrary.initDisplayOpinion(ActivityQRCode.this);
-        Intent intent = new Intent(ActivityQRCode.this, CaptureActivity.class);
+        ZXingLibrary.initDisplayOpinion(QRMainActivity.this);
+        Intent intent = new Intent(QRMainActivity.this, CaptureActivity.class);
         startActivityForResult(intent, REQUEST_CODE);
 
 
@@ -117,7 +117,7 @@ public class ActivityQRCode extends AppCompatActivity {
 
 
                 } else if (bundle.getInt(CodeUtils.RESULT_TYPE) == CodeUtils.RESULT_FAILED) {
-                    Toast.makeText(ActivityQRCode.this, "解析二维码失败", Toast.LENGTH_LONG).show();
+                    Toast.makeText(QRMainActivity.this, "解析二维码失败", Toast.LENGTH_LONG).show();
                 }
             }
         }
