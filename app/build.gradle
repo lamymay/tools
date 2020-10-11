@@ -8,7 +8,8 @@ android {
         applicationId "com.arc.tool"
         minSdkVersion 25
         targetSdkVersion 30
-        versionCode 1
+        // 修改版app本号的
+        versionCode 2
         versionName "1.0.1"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
@@ -19,6 +20,15 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
+
+    }
+
+    android.applicationVariants.all {
+        variant ->
+            variant.outputs.all {
+                // 此处指定生成的apk文件名
+                outputFileName = "tool.apk"
+            }
     }
 }
 
