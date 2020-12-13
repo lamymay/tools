@@ -47,9 +47,6 @@ public class ActivityQRCode extends AppCompatActivity {
 //        System.out.println("7测试判断是否是链接,预期 false,实际="+isUri(""));//false
 
 
-
-
-
         // 1 检查相机权限
         getCameraPermission();
 
