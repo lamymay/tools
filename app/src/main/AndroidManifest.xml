@@ -45,7 +45,7 @@
             android:icon="@mipmap/ic_launcher"
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
-        <activity android:name=".activity.qrcode.ActivityQRCode">
+        <activity android:name=".activity.qrcode.QRMainActivity">
             <!--  声明程序入口，程序启动在 做跳转到 MainActivity-->
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
