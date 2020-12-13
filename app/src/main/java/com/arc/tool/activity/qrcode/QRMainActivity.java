@@ -1,16 +1,12 @@
 package com.arc.tool.activity.qrcode;
 
-import android.Manifest;
 import android.content.Intent;
-import android.content.pm.PackageManager;
-import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.*;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
 import com.arc.tool.R;
+import com.arc.tool.utils.CheckPermissionUtils;
 import com.arc.tool.utils.OutputImage;
 import com.uuzuche.lib_zxing.activity.CaptureActivity;
 import com.uuzuche.lib_zxing.activity.CodeUtils;
@@ -22,7 +18,7 @@ import com.uuzuche.lib_zxing.activity.ZXingLibrary;
  * @author may
  * @since 2020/08/16 21:48
  */
-public class ActivityQRCode extends AppCompatActivity {
+public class QRMainActivity extends AppCompatActivity {
 
     /**
      * 标志位
@@ -48,7 +44,7 @@ public class ActivityQRCode extends AppCompatActivity {
 
 
         // 1 检查相机权限
-        getCameraPermission();
+        CheckPermissionUtils.getCameraPermission(QRMainActivity.this);
 
         qrScanShowTextView = (TextView) findViewById(R.id.qrScanShowText);
 //
@@ -81,7 +77,7 @@ public class ActivityQRCode extends AppCompatActivity {
 
 
                 //  2扫码
-                scan(ActivityQRCode.this);
+                scan(QRMainActivity.this);
                 //处理返回结果
 
             }
@@ -89,44 +85,17 @@ public class ActivityQRCode extends AppCompatActivity {
 
     }
 
-    boolean getCameraPermission() {
-
-        int selfPermission = ContextCompat.checkSelfPermission(ActivityQRCode.this, Manifest.permission.CAMERA);
-        System.out.println("当前相机授权情况(说明:0=已授权)="+selfPermission);
-
-        int target = PackageManager.PERMISSION_GRANTED;
-        System.out.println("PackageManager.PERMISSION_GRANTED"+target);
-
-        System.out.println(selfPermission == target);
-        if (selfPermission == PackageManager.PERMISSION_GRANTED) {
-            //Toast.makeText(ActivityQRCode.this,"您成功申请了动态权限",Toast.LENGTH_SHORT).show();
-            System.out.println("当前相机已授权");
-        } else {
-            System.out.println("当前无相机权限");
-            //否则去请求相机权限
-            ActivityCompat.requestPermissions(ActivityQRCode.this, new String[]{Manifest.permission.CAMERA}, 100);
-        }
-
-//
-//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-//            //版本判断
-//            if (checkSelfPermission(Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
-//                ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE,
-//                        Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.CAMERA}, 1);
-//            }
-//        }
-        System.out.println("当前SDK版本是:"+Build.VERSION.SDK_INT);
-        return true;
-    }
-
-    private void scan(ActivityQRCode context) {
 
 
-       // String message = "识别二维码" + context;
+
+    private void scan(QRMainActivity context) {
+
+
+        // String message = "识别二维码" + context;
 //        Toast.makeText(ActivityQRCode.this, message, Toast.LENGTH_SHORT).show();
 //
-        ZXingLibrary.initDisplayOpinion(ActivityQRCode.this);
-        Intent intent = new Intent(ActivityQRCode.this, CaptureActivity.class);
+        ZXingLibrary.initDisplayOpinion(QRMainActivity.this);
+        Intent intent = new Intent(QRMainActivity.this, CaptureActivity.class);
         startActivityForResult(intent, REQUEST_CODE);
     }
 
@@ -160,7 +129,7 @@ public class ActivityQRCode extends AppCompatActivity {
 
 
                 } else if (bundle.getInt(CodeUtils.RESULT_TYPE) == CodeUtils.RESULT_FAILED) {
-                    Toast.makeText(ActivityQRCode.this, "解析二维码失败", Toast.LENGTH_LONG).show();
+                    Toast.makeText(QRMainActivity.this, "解析二维码失败", Toast.LENGTH_LONG).show();
                 }
             }
         }
