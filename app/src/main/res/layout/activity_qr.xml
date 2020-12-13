@@ -17,17 +17,17 @@
     <!--输入框-->
     <AutoCompleteTextView
             android:id="@+id/qrInput1"
-            android:text="@string/qr_input_1_default"
+            android:text="@string/qrInput1Default"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/qrOutputImage"
             android:layout_centerHorizontal="true"
     />
 
-
+    <!-- 点击 根据输入字符去显示二维码-->
     <Button
             android:id="@+id/qrBtnCreateImg"
-            android:text="@string/qr_btn_create_image"
+            android:text="@string/qrBtnCreateImage"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/qrInput1"
@@ -35,11 +35,10 @@
 
     />
 
-
     <!-- 点击 启动相机识别二维码-->
     <Button
             android:id="@+id/qrBtnScanImage"
-            android:text="@string/qr_btn_scan_image"
+            android:text="@string/qrBtnScanImage"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/qrBtnCreateImg"
@@ -47,6 +46,15 @@
 
     />
 
+    <!-- 点击 识别出条码信息展示-->
+    <TextView
+            android:id="@+id/qrScanShowText"
+            android:text="@string/qrScanShowDefault"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/qrBtnScanImage"
+            android:layout_centerHorizontal="true"
+    />
 
 </RelativeLayout>
 

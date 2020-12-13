@@ -1,8 +1,9 @@
 <resources>
-    <string name="app_name">😬</string>
-    <string name="qr_input_1_default">"122.51.110.127/file"</string>
-    <string name="qr_btn_create_image">转为二维码</string>
-    <string name="qr_btn_scan_image">识别二维码</string>
+    <string name="appName">扫码工具</string>
+    <string name="qrInput1Default">"你好!"</string>
+    <string name="qrScanShowDefault">"你好"</string>
+    <string name="qrBtnCreateImage">转为二维码</string>
+    <string name="qrBtnScanImage">识别二维码</string>
 
 
 </resources>

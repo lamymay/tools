@@ -1,16 +1,15 @@
 package com.arc.tool.activity.qrcode;
 
+import android.Manifest;
 import android.content.Intent;
-import android.net.Uri;
+import android.content.pm.PackageManager;
+import android.os.Build;
 import android.os.Bundle;
-import android.util.Patterns;
 import android.view.View;
-import android.webkit.URLUtil;
-import android.widget.AutoCompleteTextView;
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.Toast;
+import android.widget.*;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import com.arc.tool.R;
 import com.arc.tool.utils.OutputImage;
 import com.uuzuche.lib_zxing.activity.CaptureActivity;
@@ -30,6 +29,10 @@ public class ActivityQRCode extends AppCompatActivity {
      */
     public final static int REQUEST_CODE = 1;
 
+    TextView qrScanShowTextView;
+
+    ImageView imageView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,6 +47,18 @@ public class ActivityQRCode extends AppCompatActivity {
 //        System.out.println("7测试判断是否是链接,预期 false,实际="+isUri(""));//false
 
 
+
+
+
+        // 1 检查相机权限
+        getCameraPermission();
+
+        qrScanShowTextView = (TextView) findViewById(R.id.qrScanShowText);
+//
+//        if (qrScanShowTextView != null) {
+//            qrScanShowTextView.setText("123");
+
+
         //点击事件
         Button clickEvent = (Button) findViewById(R.id.qrBtnCreateImg);
         clickEvent.setOnClickListener(new View.OnClickListener() {
@@ -56,7 +71,7 @@ public class ActivityQRCode extends AppCompatActivity {
                 System.out.println(inputString);
 
                 //输出图片
-                ImageView imageView = findViewById(R.id.qrOutputImage);
+                imageView = findViewById(R.id.qrOutputImage);
                 new OutputImage().createQR(inputString, imageView, getApplicationContext());
             }
         });
@@ -66,28 +81,58 @@ public class ActivityQRCode extends AppCompatActivity {
         qrBtnScanImageButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                scan(ActivityQRCode.this);
 
+
+                //  2扫码
+                scan(ActivityQRCode.this);
+                //处理返回结果
 
             }
         });
 
     }
 
-    private void scan(ActivityQRCode activityQRCode) {
-        String message = "识别二维码";
-        Toast.makeText(ActivityQRCode.this, message, Toast.LENGTH_SHORT).show();
+    boolean getCameraPermission() {
 
+        int selfPermission = ContextCompat.checkSelfPermission(ActivityQRCode.this, Manifest.permission.CAMERA);
+        System.out.println("当前相机授权情况(说明:0=已授权)="+selfPermission);
+
+        int target = PackageManager.PERMISSION_GRANTED;
+        System.out.println("PackageManager.PERMISSION_GRANTED"+target);
+
+        System.out.println(selfPermission == target);
+        if (selfPermission == PackageManager.PERMISSION_GRANTED) {
+            //Toast.makeText(ActivityQRCode.this,"您成功申请了动态权限",Toast.LENGTH_SHORT).show();
+            System.out.println("当前相机已授权");
+        } else {
+            System.out.println("当前无相机权限");
+            //否则去请求相机权限
+            ActivityCompat.requestPermissions(ActivityQRCode.this, new String[]{Manifest.permission.CAMERA}, 100);
+        }
+
+//
+//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+//            //版本判断
+//            if (checkSelfPermission(Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+//                ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE,
+//                        Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.CAMERA}, 1);
+//            }
+//        }
+        System.out.println("当前SDK版本是:"+Build.VERSION.SDK_INT);
+        return true;
+    }
+
+    private void scan(ActivityQRCode context) {
+
+
+       // String message = "识别二维码" + context;
+//        Toast.makeText(ActivityQRCode.this, message, Toast.LENGTH_SHORT).show();
+//
         ZXingLibrary.initDisplayOpinion(ActivityQRCode.this);
         Intent intent = new Intent(ActivityQRCode.this, CaptureActivity.class);
         startActivityForResult(intent, REQUEST_CODE);
-
-
     }
 
-    private static boolean isUri(String uri) {
-        return Patterns.WEB_URL.matcher(uri).matches() || URLUtil.isValidUrl(uri);
-    }
 
     /**
      * 处理二维码扫描结果
@@ -111,9 +156,10 @@ public class ActivityQRCode extends AppCompatActivity {
                     String result = bundle.getString(CodeUtils.RESULT_STRING);
                     Toast.makeText(this, "解析结果:" + result, Toast.LENGTH_LONG).show();
 
-                    Uri uri = Uri.parse(result);
-                    Intent webBrowserIntent = new Intent(Intent.ACTION_VIEW, uri);
-                    startActivity(webBrowserIntent);
+                    qrScanShowTextView.setText(result);
+                    //  Uri uri = Uri.parse(result);
+//                    Intent webBrowserIntent = new Intent(Intent.ACTION_VIEW, uri);
+//                    startActivity(webBrowserIntent);
 
 
                 } else if (bundle.getInt(CodeUtils.RESULT_TYPE) == CodeUtils.RESULT_FAILED) {
