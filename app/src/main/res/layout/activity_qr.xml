@@ -5,13 +5,33 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-
+    <!--二维码输出-->
     <ImageView
             android:id="@+id/qrOutputImage"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true"
+
+    />
+
+    <!--
+
+android:layout_centerHorizontal="true"
+
+上下居中
+android:layout_centerVertical="true"
+
+    -->
+
+    <!-- 点击 识别出条码信息展示-->
+    <TextView
+            android:id="@+id/qrScanShowText"
+            android:text="@string/qrScanShowDefault"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/qrOutputImage"
     />
 
     <!--输入框-->
@@ -20,7 +40,7 @@
             android:text="@string/qrInput1Default"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/qrOutputImage"
+            android:layout_below="@+id/qrScanShowText"
             android:layout_centerHorizontal="true"
     />
 
@@ -30,9 +50,9 @@
             android:text="@string/qrBtnCreateImage"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+
             android:layout_below="@+id/qrInput1"
             android:layout_centerHorizontal="true"
-
     />
 
     <!-- 点击 启动相机识别二维码-->
@@ -43,18 +63,9 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/qrBtnCreateImg"
             android:layout_centerHorizontal="true"
-
     />
 
-    <!-- 点击 识别出条码信息展示-->
-    <TextView
-            android:id="@+id/qrScanShowText"
-            android:text="@string/qrScanShowDefault"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/qrBtnScanImage"
-            android:layout_centerHorizontal="true"
-    />
+
 
 </RelativeLayout>
 

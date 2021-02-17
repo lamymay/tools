@@ -1,9 +1,9 @@
 <resources>
-    <string name="appName">扫码工具</string>
+    <string name="appName">二维码工具</string>
     <string name="qrInput1Default">"你好!"</string>
-    <string name="qrScanShowDefault">"你好"</string>
+    <string name="qrScanShowDefault">"这里是扫码结果"</string>
     <string name="qrBtnCreateImage">转为二维码</string>
-    <string name="qrBtnScanImage">识别二维码</string>
+    <string name="qrBtnScanImage">识别条码</string>
 
 
 </resources>
